@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
+import { WebView, View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -110,24 +110,112 @@ class SadScreen1 extends React.Component {
   render() {
     return (
 
-        <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
-          <Image
-            source={require('./Sad/Images/sad1.jpg')}
-            style={{ width: 400, height: 600, resizeMode: 'contain' }}
-          />
-          <TouchableOpacity>
-            <Text>Arham </Text>
-          </TouchableOpacity>
-
-
-
-        </View>
-
-
-
-
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Sad/Images/sad1.jpg')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad2')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
     )
   }
+}
+
+class SadScreen2 extends React.Component {
+  render() {
+    return (
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Sad/Images/sad2.jpg')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad3')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class SadScreen3 extends React.Component {
+  render() {
+    return (
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Sad/Images/sad3.png')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad4')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class SadScreen4 extends React.Component {
+  render() {
+    return (
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Sad/Quotes/quote1.jpg')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad5')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class SadScreen5 extends React.Component {
+  render() {
+    return (
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Sad/Quotes/quote2.jpeg')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad6')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+
+class SadScreen6 extends React.Component {
+  render() {
+    return (
+
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Sad/Quotes/quote3.jpg')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad7')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+}
+class SadScreen7 extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, backgroundColor: "red" }}>
+        <WebView source={{ uri: "https://twitter.com" }} />
+      </View>
+    );
+  }
+
 }
 
 const AppNavigator = createStackNavigator(
@@ -135,7 +223,13 @@ const AppNavigator = createStackNavigator(
     Home: HomeScreen,
     Emotions: EmotionPickerScreen,
     Happy1: HappyScreen1,
-    Sad1: SadScreen1
+    Sad1: SadScreen1,
+    Sad2: SadScreen2,
+    Sad3: SadScreen3,
+    Sad4: SadScreen4,
+    Sad5: SadScreen5,
+    Sad6: SadScreen6,
+    Sad7: SadScreen7,
   },
   {
     initialRouteName: 'Home',
@@ -195,6 +289,18 @@ const styles = StyleSheet.create({
     padding: 15,
     marginTop: 325,
     width: 100,
+    textAlign: 'center',
+  },
+
+  nextButton: {
+    backgroundColor: '#f0c311',
+    color: 'white',
+    fontSize: 16,
+    marginBottom: 50,
+    marginLeft: 250,
+    padding: 15,
+    fontWeight: 'bold',
+    overflow: 'visible',
     textAlign: 'center',
   }
 });
