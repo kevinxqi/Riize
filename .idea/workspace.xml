@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e8a7185-37e6-4550-98de-fa5880fcd2f2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Riize.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -79,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1572740434053</updated>
-      <workItem from="1572740435201" duration="17958000" />
+      <workItem from="1572740435201" duration="19592000" />
     </task>
     <task id="LOCAL-00001" summary="First com">
       <created>1572742766331</created>
@@ -109,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1572767902721</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added stars">
+      <created>1572772463646</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1572772463646</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -129,6 +132,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First com" />
     <MESSAGE value="Fixed button" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed button" />
+    <MESSAGE value="Added stars" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added stars" />
   </component>
 </project>

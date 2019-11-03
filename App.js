@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { WebView, View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
+import { Container, Item, Form, Input, Button, Label } from "native-base";
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -12,10 +13,12 @@ import * as Font from 'expo-font';
 import FontAwesome from "@expo/vector-icons/build/FontAwesome";
 import StarRating from 'react-native-star-rating';
 import AppLoading from "expo/build/launch/AppLoading";
+import { TextInput } from 'react-native';
 
 
 
 class HomeScreen extends React.Component {
+
 
   componentDidMount() {
     console.log("started");
@@ -29,6 +32,8 @@ class HomeScreen extends React.Component {
   };
 
 
+
+
   render() {
     console.log("ready");
     console.log(this.state.fontLoaded);
@@ -40,7 +45,7 @@ class HomeScreen extends React.Component {
           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
             <Text style={{ fontSize: 50, color: 'white', fontFamily: "McLaren" }}>Riize</Text>
             <View style={{ alignSelf: 'baseline' }}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')}>
                 <Text style={[{ fontFamily: "McLaren" }, styles.button]}>Log-In</Text>
               </TouchableOpacity>
               </View>
@@ -58,6 +63,60 @@ class HomeScreen extends React.Component {
   // }
 }
 
+
+class LoginScreen extends React.Component {
+
+    componentDidMount() {
+        console.log("started");
+        Font.loadAsync({
+            'McLaren': require('./assets/fonts/McLaren-Regular.ttf'),
+        }).then(r => { this.setState({ fontLoaded: true }); });
+    }
+
+    state = {
+        fontLoaded: false,
+    };
+
+
+    render() {
+        console.log("ready");
+        console.log(this.state.fontLoaded);
+        // if (this.state.fontLoaded) {
+        if (this.state.fontLoaded) {
+            return (
+
+                <ImageBackground source={require('./ScreenImages/LoginScreen.jpg')} style={styles.container}>
+
+
+                        <Item floatingLabel style={{fontSize: 18, marginBottom: 10}}>
+                            <Label style={{fontSize: 18, marginBottom: 10, color: "white"}}>Email</Label>
+                            <Input autoCapitalize="none" autoCorrect={false} fontSize={18}/>
+                        </Item>
+                        <Item floatingLabel>
+                            <Label>Password</Label>
+                            <Input
+                                secureTextEntry={true}
+                                autoCapitalize="none"
+                                autoCorrect={false}
+                                width ={20}
+                            />
+                        </Item>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
+                            <Text style={[{ fontFamily: "McLaren" }, styles.button]}>Submit</Text>
+                        </TouchableOpacity>
+
+                </ImageBackground>
+            )
+        }
+        else {
+            console.log("wtf");
+            return null;
+        }
+    }
+    // else{
+    //   this.render();
+    // }
+}
 
 
 class EmotionPickerScreen extends React.Component {
@@ -296,7 +355,8 @@ const AppNavigator = createStackNavigator(
     Sad6: SadScreen6,
     Sad7: SadScreen7,
     Sad8: SadScreen8,
-      Rating: RatingScreen
+      Rating: RatingScreen,
+      Login: LoginScreen
   },
   {
     initialRouteName: 'Home',
