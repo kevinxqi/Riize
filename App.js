@@ -20,7 +20,7 @@ class HomeScreen extends React.Component {
     console.log("started");
     Font.loadAsync({
       'McLaren': require('./assets/fonts/McLaren-Regular.ttf'),
-    }).then(r => { this.setState({ fontLoaded: true });});
+    }).then(r => { this.setState({ fontLoaded: true }); });
   }
 
   state = {
@@ -32,39 +32,39 @@ class HomeScreen extends React.Component {
     console.log("ready");
     console.log(this.state.fontLoaded);
     // if (this.state.fontLoaded) {
-    if(this.state.fontLoaded) {
+    if (this.state.fontLoaded) {
       return (
 
-          <ImageBackground source={require('./ScreenImages/LoginScreen.jpg')} style={styles.container}>
-            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-              <Text style={{fontSize: 50, color: 'white', fontFamily: "McLaren"}}>Riize</Text>
-              <View style={{alignSelf: 'baseline'}}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
-                  <Text style={[{fontFamily: "McLaren"},styles.button]}>Log-In</Text>
-                </TouchableOpacity>
-              </View>
+        <ImageBackground source={require('./ScreenImages/LoginScreen.jpg')} style={styles.container}>
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+            <Text style={{ fontSize: 50, color: 'white', fontFamily: "McLaren" }}>Riize</Text>
+            <View style={{ alignSelf: 'baseline' }}>
+              <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
+                <Text style={[{ fontFamily: "McLaren" }, styles.button]}>Log-In</Text>
+              </TouchableOpacity>
             </View>
-          </ImageBackground>
+          </View>
+        </ImageBackground>
       )
     }
     else {
       console.log("wtf");
       return null;
     }
-    }
-    // else{
-    //   this.render();
-    // }
   }
+  // else{
+  //   this.render();
+  // }
+}
 
 
 
 class EmotionPickerScreen extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: '#03DAC6', justifyContent: "center" }}>
+      <View style={{ flex: 1, backgroundColor: 'skyblue', justifyContent: "center" }}>
 
-        <Text style={[styles.text,{fontFamily: "McLaren"}]} >How Are You Feeling?</Text>
+        <Text style={[styles.text, { fontFamily: "McLaren" }]} >How Are You Feeling?</Text>
         <View style={styles.emoticons}>
           <View>
             <FontAwesomeIcon icon={faSmileBeam} color="yellow" size={50} onPress={() => this.props.navigation.navigate('Happy1')} />
@@ -115,7 +115,7 @@ class SadScreen1 extends React.Component {
           source={require('./Sad/Images/sad1.jpg')}
           style={{ width: 400, height: 600, resizeMode: 'contain' }}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad2')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad4')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -132,7 +132,7 @@ class SadScreen2 extends React.Component {
           source={require('./Sad/Images/sad2.jpg')}
           style={{ width: 400, height: 600, resizeMode: 'contain' }}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad3')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad5')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -149,7 +149,7 @@ class SadScreen3 extends React.Component {
           source={require('./Sad/Images/sad3.png')}
           style={{ width: 400, height: 600, resizeMode: 'contain' }}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad4')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad6')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -166,7 +166,7 @@ class SadScreen4 extends React.Component {
           source={require('./Sad/Quotes/quote1.jpg')}
           style={{ width: 400, height: 600, resizeMode: 'contain' }}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad5')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad7')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -183,7 +183,7 @@ class SadScreen5 extends React.Component {
           source={require('./Sad/Quotes/quote2.jpeg')}
           style={{ width: 400, height: 600, resizeMode: 'contain' }}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad6')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad8')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -198,21 +198,46 @@ class SadScreen6 extends React.Component {
       <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
         <Image
           source={require('./Sad/Quotes/quote3.jpg')}
-          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+          style={{ width: 400, height: 600, resizeMode: 'contain', marginTop: 15}}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad7')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Ratings')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
     )
   }
 }
+
 class SadScreen7 extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: "red" }}>
-        <WebView source={{ uri: "https://twitter.com" }} />
+
+      <View style={{ flex: 1,  backgroundColor: '#87ceeb'}}>
+        <WebView useWebKit={true} source={{ url: 'https://thoughtcatalog.com/january-nelson/2018/07/inspirational-stories/' }}
+          style={{ height: "80%", width: "100%", resizeMode: 'cover', flex: 1, marginBottom: 40, marginTop: 20 }} />
+
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad2')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
       </View>
+
+    );
+  }
+}
+
+class SadScreen8 extends React.Component {
+  render() {
+    return (
+
+      <View style={{ flex: 1,  backgroundColor: '#87ceeb'}}>
+        <WebView useWebKit={true} source={{ url: 'https://tinybuddha.com/blog/30-ways-to-improve-your-mood-when-youre-feeling-down/'}}
+          style={{ height: "80%", width: "100%", resizeMode: 'cover', flex: 1, marginBottom: 40, marginTop: 20 }} />
+
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Sad3')} >
+          <Text style={styles.nextButton}>Next</Text>
+        </TouchableOpacity>
+      </View>
+
     );
   }
 
@@ -230,6 +255,7 @@ const AppNavigator = createStackNavigator(
     Sad5: SadScreen5,
     Sad6: SadScreen6,
     Sad7: SadScreen7,
+    Sad8: SadScreen8
   },
   {
     initialRouteName: 'Home',
