@@ -8,26 +8,55 @@ import { faFrown } from '@fortawesome/free-solid-svg-icons'
 import { faAngry } from '@fortawesome/free-solid-svg-icons'
 import { TouchableOpacity } from 'react-native';
 import { faGrimace } from '@fortawesome/free-solid-svg-icons'
+import * as Font from 'expo-font';
+import FontAwesome from "@expo/vector-icons/build/FontAwesome";
+import AppLoading from "expo/build/launch/AppLoading";
+
 
 
 class HomeScreen extends React.Component {
-  render() {
-    return (
-      <ImageBackground source={require('./ScreenImages/LoginScreen.jpg')} style={styles.container}>
 
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <Text style={{ fontSize: 50, color: 'white' }}>Riize</Text>
-          <View style={{ borderRadius: 18, alignSelf: 'baseline' }}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
-              <Text style={styles.button}>Log-In</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ImageBackground >
-
-    );
+  componentDidMount() {
+    console.log("started");
+    Font.loadAsync({
+      'McLaren': require('./assets/fonts/McLaren-Regular.ttf'),
+    }).then(r => { this.setState({ fontLoaded: true });});
   }
-}
+
+  state = {
+    fontLoaded: false,
+  };
+
+
+  render() {
+    console.log("ready");
+    console.log(this.state.fontLoaded);
+    // if (this.state.fontLoaded) {
+    if(this.state.fontLoaded) {
+      return (
+
+          <ImageBackground source={require('./ScreenImages/LoginScreen.jpg')} style={styles.container}>
+            <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+              <Text style={{fontSize: 50, color: 'white', fontFamily: "McLaren"}}>Riize</Text>
+              <View style={{alignSelf: 'baseline'}}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
+                  <Text style={[{fontFamily: "McLaren"},styles.button]}>Log-In</Text>
+                </TouchableOpacity>
+              </View>
+            </View>
+          </ImageBackground>
+      )
+    }
+    else {
+      console.log("wtf");
+      return null;
+    }
+    }
+    // else{
+    //   this.render();
+    // }
+  }
+
 
 
 class EmotionPickerScreen extends React.Component {
@@ -35,7 +64,7 @@ class EmotionPickerScreen extends React.Component {
     return (
       <View style={{ flex: 1, backgroundColor: '#03DAC6', justifyContent: "center" }}>
 
-        <Text style={styles.text} >How Are You Feeling?</Text>
+        <Text style={[styles.text,{fontFamily: "McLaren"}]} >How Are You Feeling?</Text>
         <View style={styles.emoticons}>
           <View>
             <FontAwesomeIcon icon={faSmileBeam} color="yellow" size={50} onPress={() => this.props.navigation.navigate('Happy1')} />
@@ -80,7 +109,7 @@ class HappyScreen1 extends React.Component {
 class SadScreen1 extends React.Component {
   render() {
     return (
-      
+
         <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
           <Image
             source={require('./Sad/Images/sad1.jpg')}
@@ -89,13 +118,13 @@ class SadScreen1 extends React.Component {
           <TouchableOpacity>
             <Text>Arham </Text>
           </TouchableOpacity>
-          
-         
-          
+
+
+
         </View>
 
-        
-      
+
+
 
     )
   }
@@ -134,7 +163,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     color: 'white',
-    fontFamily: "Futura",
+    //fontFamily: "McLaren",
     fontWeight: 'bold',
     textAlign: 'center',
     marginBottom: 30
