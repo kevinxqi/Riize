@@ -86,14 +86,13 @@ class LoginScreen extends React.Component {
             return (
 
                 <ImageBackground source={require('./ScreenImages/LoginScreen.jpg')} style={styles.container}>
-
-
-                        <Item floatingLabel style={{fontSize: 18, marginBottom: 10}}>
-                            <Label style={{fontSize: 18, marginBottom: 10, color: "white"}}>Email</Label>
-                            <Input autoCapitalize="none" autoCorrect={false} fontSize={18}/>
+                    <Text style={{ fontSize: 50, color: 'white', fontFamily: "McLaren" }}>Login Screen</Text>
+                        <Item floatingLabel style={{fontSize: 18, marginBottom: 10, marginTop:30}}>
+                            <Label style={{fontSize: 18, marginBottom: 20, color: "white"}}>Email</Label>
+                            <Input autoCapitalize="none" autoCorrect={false} placeHolderTextColor="White"/>
                         </Item>
                         <Item floatingLabel>
-                            <Label>Password</Label>
+                            <Label  style={{fontSize: 18, marginBottom: 20, color: "white"}}>Password</Label>
                             <Input
                                 secureTextEntry={true}
                                 autoCapitalize="none"
