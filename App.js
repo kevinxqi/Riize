@@ -1,47 +1,51 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import MyScreen from 'react-navigation'
-import MyNavigator from 'react-navigation-stack'
-import {createAppContainer} from 'react-navigation';
-import {createStackNavigator} from 'react-navigation-stack';
-
-const MainNavigator = MyNavigator({
-  Home: {screen: HomeScreen},
-  Profile: {screen: ProfileScreen},
-});
-
-const App = MyScreen(MainNavigator);
-
-export default App;
+import * as React from 'react';
+import { Button, View, Text } from 'react-native';
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
   render() {
-    const {navigate} = this.props.navigation;
     return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Home Screen</Text>
         <Button
-            title="Go to Jane's profile"
-            onPress={() => navigate('Profile', {name: 'Jane'})}
+          title="Go to Details"
+          onPress={() => this.props.navigation.navigate('Details')}
         />
+      </View>
     );
   }
 }
 
-class ProfileScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Welcome',
-  };
+class DetailsScreen extends React.Component {
   render() {
-    const {navigate} = this.props.navigation;
     return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <Text>Details Screen</Text>
         <Button
-            title="Go to Jane's profile"
-            onPress={() => navigate('Profile', {name: 'Jane'})}
+          title="Go to Home"
+          onPress={() => this.props.navigation.navigate('Home')}
         />
+      </View>
     );
   }
 }
 
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Details',
+  }
+);
 
+
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
