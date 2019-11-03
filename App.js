@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSmileBeam } from '@fortawesome/free-solid-svg-icons'
 import { faFrown } from '@fortawesome/free-solid-svg-icons'
 import { faAngry } from '@fortawesome/free-solid-svg-icons'
+import { TouchableOpacity } from 'react-native';
 import { faGrimace } from '@fortawesome/free-solid-svg-icons'
 
 
@@ -16,13 +17,14 @@ class HomeScreen extends React.Component {
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 50, color: 'white' }}>Riize</Text>
-          <Button style={{ borderRadius: 40, backgroundColor: '#ffae42' }}
-            title="Login"
-            onPress={() => this.props.navigation.navigate('Emotions')}
-          />
+          <View style={{ alignSelf:'baseline'}}>
+          <TouchableOpacity >
+            <Text style={styles.button}>Log-In</Text>
+          </TouchableOpacity>
+          </View>
         </View>
       </ImageBackground >
-     
+
     );
   }
 }
@@ -64,10 +66,11 @@ class EmotionPickerScreen extends React.Component {
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Emotions: EmotionPickerScreen,
+    Emotions: EmotionPickerScreen
   },
   {
     initialRouteName: 'Home',
+    headerMode: 'none'
   }
 );
 
@@ -110,4 +113,18 @@ const styles = StyleSheet.create({
   activeTitle: {
     color: 'red',
   },
+  button: {
+    backgroundColor: '#f0c311',
+    // borderColor: 'white',
+    // borderWidth: 1,
+    borderRadius: 18,
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
+    overflow: 'visible',
+    padding: 15,
+    marginTop: 500,
+    width: 100,
+    textAlign:'center',
+  }
 });
