@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Button, View, Text } from 'react-native';
+import { Button, View, Text, StyleSheet} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { Ionicons } from '@expo/vector-icons';
 
 class HomeScreen extends React.Component {
   render() {
@@ -10,18 +11,19 @@ class HomeScreen extends React.Component {
         <Text style={{fontSize: 20}}>Rise</Text>
         <Button style={{borderRadius: 40, backgroundColor: '#ffae42'}}
           title="Login"
-          onPress={() => this.props.navigation.navigate('Details')}
+          onPress={() => this.props.navigation.navigate('Emotions')}
         />
       </View>
     );
   }
 }
 
-class DetailsScreen extends React.Component {
+class EmotionPickerScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Details Screen</Text>
+        <Text>How Are You Feeling?</Text>
+        <Ionicons name="md-checkmark-circle" size={32} color="green" onPress = {() => console.log("pressed")}/>
         <Button
           title="Go to Home"
           onPress={() => this.props.navigation.navigate('Home')}
@@ -34,7 +36,7 @@ class DetailsScreen extends React.Component {
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Details: DetailsScreen,
+    Emotions: EmotionPickerScreen,
   },
   {
     initialRouteName: 'Home',
