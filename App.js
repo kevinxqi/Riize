@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, Text, StyleSheet, ImageBackground } from 'react-native';
+import { Button, View, Text, StyleSheet, ImageBackground, Image } from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
@@ -17,10 +17,10 @@ class HomeScreen extends React.Component {
 
         <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
           <Text style={{ fontSize: 50, color: 'white' }}>Riize</Text>
-          <View style={{ alignSelf:'baseline'}}>
-          <TouchableOpacity >
-            <Text style={styles.button}>Log-In</Text>
-          </TouchableOpacity>
+          <View style={{ borderRadius: 18, alignSelf: 'baseline' }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
+              <Text style={styles.button}>Log-In</Text>
+            </TouchableOpacity>
           </View>
         </View>
       </ImageBackground >
@@ -28,6 +28,7 @@ class HomeScreen extends React.Component {
     );
   }
 }
+
 
 class EmotionPickerScreen extends React.Component {
   render() {
@@ -37,23 +38,23 @@ class EmotionPickerScreen extends React.Component {
         <Text style={styles.text} >How Are You Feeling?</Text>
         <View style={styles.emoticons}>
           <View>
-            <FontAwesomeIcon icon={faSmileBeam} color="yellow" size={50} />
-            <Text style={{ textAlign: 'center', marginTop: 5, color:'white' }}>Happy</Text>
+            <FontAwesomeIcon icon={faSmileBeam} color="yellow" size={50} onPress={() => this.props.navigation.navigate('Happy1')} />
+            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white', fontWeight: "bold" }}>Happy</Text>
           </View>
 
           <View>
-            <FontAwesomeIcon icon={faFrown} color="yellow" size={50} />
-            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white' }}>Sad</Text>
+            <FontAwesomeIcon icon={faFrown} color="yellow" size={50} onPress={() => this.props.navigation.navigate('Sad1')} />
+            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white', fontWeight: "bold" }}>Sad</Text>
           </View>
 
           <View>
             <FontAwesomeIcon icon={faAngry} color="yellow" size={50} />
-            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white' }}>Mad</Text>
+            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white', fontWeight: "bold" }}>Mad</Text>
           </View>
 
           <View >
             <FontAwesomeIcon icon={faGrimace} color="yellow" size={50} />
-            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white' }}>Scared</Text>
+            <Text style={{ textAlign: 'center', marginTop: 5, color: 'white', fontWeight: "bold" }}>Scared</Text>
           </View>
 
         </View>
@@ -63,10 +64,49 @@ class EmotionPickerScreen extends React.Component {
   }
 }
 
+class HappyScreen1 extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+        <Image
+          source={require('./Happy/Images/Happy1.jpg')}
+          style={{ width: 400, height: 600, resizeMode: 'contain' }}
+        />
+      </View>
+    )
+  }
+}
+
+class SadScreen1 extends React.Component {
+  render() {
+    return (
+      
+        <View style={{ flex: 1, alignItems: "center", justifyContent: 'center', backgroundColor: '#87ceeb' }}>
+          <Image
+            source={require('./Sad/Images/sad1.jpg')}
+            style={{ width: 400, height: 600, resizeMode: 'contain' }}
+          />
+          <TouchableOpacity>
+            <Text>Arham </Text>
+          </TouchableOpacity>
+          
+         
+          
+        </View>
+
+        
+      
+
+    )
+  }
+}
+
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
-    Emotions: EmotionPickerScreen
+    Emotions: EmotionPickerScreen,
+    Happy1: HappyScreen1,
+    Sad1: SadScreen1
   },
   {
     initialRouteName: 'Home',
@@ -103,7 +143,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: 'center'
+    justifyContent: 'center',
+
   },
 
   title: {
@@ -123,8 +164,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     overflow: 'visible',
     padding: 15,
-    marginTop: 500,
+    marginTop: 325,
     width: 100,
-    textAlign:'center',
+    textAlign: 'center',
   }
 });
