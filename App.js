@@ -10,6 +10,7 @@ import { TouchableOpacity } from 'react-native';
 import { faGrimace } from '@fortawesome/free-solid-svg-icons'
 import * as Font from 'expo-font';
 import FontAwesome from "@expo/vector-icons/build/FontAwesome";
+import StarRating from 'react-native-star-rating';
 import AppLoading from "expo/build/launch/AppLoading";
 
 
@@ -42,8 +43,8 @@ class HomeScreen extends React.Component {
               <TouchableOpacity onPress={() => this.props.navigation.navigate('Emotions')}>
                 <Text style={[{ fontFamily: "McLaren" }, styles.button]}>Log-In</Text>
               </TouchableOpacity>
+              </View>
             </View>
-          </View>
         </ImageBackground>
       )
     }
@@ -200,7 +201,7 @@ class SadScreen6 extends React.Component {
           source={require('./Sad/Quotes/quote3.jpg')}
           style={{ width: 400, height: 600, resizeMode: 'contain', marginTop: 15}}
         />
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('Ratings')} >
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('Rating')} >
           <Text style={styles.nextButton}>Next</Text>
         </TouchableOpacity>
       </View>
@@ -243,6 +244,45 @@ class SadScreen8 extends React.Component {
 
 }
 
+class RatingScreen extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            starCount: 0
+        };
+    }
+
+    onStarRatingPress(rating) {
+        this.setState({
+            starCount: rating
+        });
+    }
+
+    render() {
+        return (
+
+            <View style={[styles.container,{backgroundColor: '#87ceeb'}]}>
+            <StarRating
+                starColor={"#f5ef42"}
+                disabled={false}
+                maxStars={5}
+                rating={this.state.starCount}
+                selectedStar={(rating) => {
+                    this.onStarRatingPress(rating)
+                    this.props.navigation.navigate('Home')
+                }}
+            />
+            {/*<View style = {{marginTop: 200}}>*/}
+            {/*    <FontAwesomeIcon icon={faSmileBeam} color="yellow" size={50} onPress={() => this.props.navigation.navigate('Happy1')} />*/}
+            {/*</View>*/}
+            </View>
+
+
+        );
+    }
+}
+
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
@@ -255,7 +295,8 @@ const AppNavigator = createStackNavigator(
     Sad5: SadScreen5,
     Sad6: SadScreen6,
     Sad7: SadScreen7,
-    Sad8: SadScreen8
+    Sad8: SadScreen8,
+      Rating: RatingScreen
   },
   {
     initialRouteName: 'Home',
